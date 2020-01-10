@@ -1,0 +1,28 @@
+{
+  "name": "nodejs_es6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "start-dev": "babel-watch --watch src src/index.js",
+    "test": "echo \"Error: no test specified\"",
+    "build": "npm run clean && babel ./src --out-dir dist",
+    "build-prod": "NODE_ENV=production npm build",
+    "clean": "rimraf dist"
+  },
+  "author": "Jahid Shohel<jahid.shohel@gmail.com>",
+  "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "babel-watch": "^7.0.0",
+    "rimraf": "^3.0.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "http-status-codes": "^1.4.0",
+    "morgan": "^1.9.1",
+    "uuid": "^3.3.3"
+  }
+}
