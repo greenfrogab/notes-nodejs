@@ -28,10 +28,15 @@ export default class NotesRouter {
   }
 
   getAll(req, res) {
-    let notes = this._notesManager.getAllNotes();
-    return res
-        .status(HttpStatus.OK)
-        .json(Array.from(notes));
+    this._notesManager.getAllNotes()
+        .then(notes => {
+          res.status(HttpStatus.OK)
+              .json(Array.from(notes));
+        })
+        .catch(err => {
+          res.status(HttpStatus.INTERNAL_SERVER_ERROR)
+              .send(err);
+        });
   }
 
   get(req, res) {
@@ -41,24 +46,28 @@ export default class NotesRouter {
       return res.status(HttpStatus.NOT_FOUND).send();
     }
 
-    let note = this._notesManager.getNote(id);
-
-    if (note === undefined) {
-      return res.status(HttpStatus.NOT_FOUND).send();
-    }
-
-    return res
-        .status(HttpStatus.OK)
-        .json(note);
+    this._notesManager.getNote(id)
+        .then(note => {
+          res.status(HttpStatus.OK)
+              .json(note);
+        })
+        .catch(err => {
+          res.status(HttpStatus.NOT_FOUND).send(err)
+        });
   }
 
   post(req, res) {
     let body = req.body;
-    let note = this._notesManager.createNote(body.text);
+    this._notesManager.createNote(body.text)
+        .then(note => {
+          res.status(HttpStatus.CREATED)
+              .json(note)
+        })
+        .catch(err => {
+          res.status(HttpStatus.INTERNAL_SERVER_ERROR)
+              .send(err);
+        });
 
-    return res
-        .status(HttpStatus.CREATED)
-        .json(note);
   }
 
   delete(req, res) {

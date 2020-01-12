@@ -1,10 +1,10 @@
-import InMemoryRepository from "../repository/in-memory-repository";
 import Note from "../routes/notes/note";
+import NotesMongoDbRepository from "../repository/mongodb-repository";
 
 export default class NotesManager {
 
   constructor() {
-    this._repository = new InMemoryRepository();
+    this._repository = new NotesMongoDbRepository();
   }
 
   /**
@@ -33,7 +33,7 @@ export default class NotesManager {
    * Deletes note found by supplied id
    */
   delete(id) {
-    //TODO: note yet implemented
+    return this._repository.delete(id);
   }
 
   /**
