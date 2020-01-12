@@ -1,4 +1,4 @@
-![](https://github.com/greenfrogab/notes-nodejjs/workflows/Notes/badge.svg)
+![](https://github.com/greenfrogab/notes-nodejs/workflows/Notes/badge.svg)
 
 # nodejs-es6
 
