@@ -1,6 +1,6 @@
 ![](https://github.com/greenfrogab/notes-nodejs/workflows/Notes/badge.svg)
 
-# nodejs-es6
+# notes-nodejs
 
 Sample NodeJS application to demonstrate REST API design with ExpressJS.
 
