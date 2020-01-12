@@ -13,5 +13,14 @@ let router = express.Router();
 let notesRouter = new NotesRouter(router);
 app.use("/notes", router);
 
-app.listen(3000);
-console.log("Server is running on port 3000");
+
+let port = 3000;
+
+if (process.env.PORT !== undefined) {
+  port = process.env.PORT;
+}
+console.log("port: ", port);
+
+
+app.listen(port);
+console.log("Server is running on port " + port);
