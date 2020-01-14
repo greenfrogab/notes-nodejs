@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  notes-nodejs-backend:
+    container_name: notes-nodejs-backend
+    image: greenfrogab/notes-nodejs:latest
+    environment:
+      - PORT=5000
+      - MONGO_HOST=notes-nodejs-mongodb
+      - MONGO_PORT=27017
+      - MONGO_DATABASE=notes
+    depends_on:
+      - notes-nodejs-mongodb
+    links:
+      - "notes-nodejs-mongodb:notes-nodejs-mongodb"
+    ports:
+      - "5000:5000"
+    networks:
+      - notes-nodejs-network
+
+  notes-nodejs-mongodb:
+    container_name: notes-mongodb
+    image: mongo:latest
+    networks:
+      - notes-nodejs-network
+
+networks:
+  notes-nodejs-network:
+    driver: bridge
