@@ -21,7 +21,7 @@ export default class NotesMongoDbRepository {
 
     let mongoConnectionUrl = "mongodb://" + mongoHost + ":" + mongoPort + "/" + mongoDb;
     console.log("Mongo db url: ", mongoConnectionUrl);
-    
+
     mongoose.connect(mongoConnectionUrl, { useNewUrlParser: true, useUnifiedTopology: true });
     this._Note = mongoose.model('Note', { text: String, status: Boolean });
   }
