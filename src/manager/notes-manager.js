@@ -1,45 +1,42 @@
 import Note from "../routes/notes/note";
-import NotesMongoDbRepository from "../repository/mongodb-repository";
 
 export default class NotesManager {
 
   constructor() {
-    this._repository = new NotesMongoDbRepository();
   }
 
   /**
    * Returns all notes
    */
   getAllNotes() {
-    return this._repository.getNotes();
+    throw "Not Implemented";
   }
 
   /**
    * Returns note found by supplied id.
    */
   getNote(id) {
-    return this._repository.getNote(id);
+    throw "Not Implemented";
   }
 
   /**
    * Creates new note by supplied "text".
    */
   createNote(text) {
-    let note = new Note(undefined, text);
-    return this._repository.addNote(note);
+    throw "Not Implemented";
   }
 
   /**
    * Deletes note found by supplied id
    */
   delete(id) {
-    return this._repository.delete(id);
+    throw "Not Implemented";
   }
 
   /**
    * Checks whether a note with supplied id already exists or not.
    */
   hasNote(id) {
-    return this._repository.has(id);
+    throw "Not Implemented";
   }
 }

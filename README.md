@@ -4,9 +4,13 @@
 
 Sample NodeJS application to demonstrate REST API design with ExpressJS.
 
-### To run (with active watch and changes reflect real time) -
+#### To run -
 
     $ npm start
+
+#### To run during development (with active watch and changes reflect real time) -
+
+    $ npm run start-dev
 
 #### To clean the project -
 
