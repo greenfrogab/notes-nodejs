@@ -8,31 +8,35 @@ export default class InMemoryRepository {
 
   getNotes() {
     return new Promise(resolve => {
-      return resolve(this._notes.values())
+      let notes = new Array();
+
+      let noteIterator = this._notes.values();
+      let result = noteIterator.next();
+
+      while (!result.done) {
+        notes.push(result.value);
+        result = noteIterator.next();
+      }
+
+      return resolve(notes)
     });
   }
 
   getNote(id) {
-    return new Promise((resolve, reject) => {
-      if (id === undefined) {
-        return reject("Invalid id: " + id);
-      }
-      return resolve(this._notes.get(id));
-    });
+    throw "Not yet implemented";
   }
 
   addNote(note) {
     return new Promise(resolve => {
-
+      let id = uuid();
+      note.id = id;
+      this._notes.set(id, note);
+      return resolve(note);
     });
-    let id = uuid();
-    note.id = id;
-    this._notes.set(id, note);
-    return note;
   }
 
   delete(id) {
-    //TODO: note yet implemented
+    throw "Not yet implemented";
   }
 
   hasNote(id) {
