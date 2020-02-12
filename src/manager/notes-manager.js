@@ -1,4 +1,4 @@
-import Note from "../routes/notes/note";
+import Note from "../routes/note";
 import NotesMongoDbRepository from "../repository/mongodb-repository";
 
 export default class NotesManager {

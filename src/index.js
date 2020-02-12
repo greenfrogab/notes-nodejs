@@ -1,21 +1,26 @@
-import NotesManager from "./manager/notes-manager";
+import express from "express";
+import logger from "morgan";
+import NotesRouter from "./routes/notes-router";
 
-let notesManager = new NotesManager();
+const app = express();
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 
-let promise1 = notesManager.createNote("Start the build");
-let promise2 = notesManager.createNote("Prepare presentation");
-let promise3 = notesManager.createNote("Call mom");
+//Notes router
+let router = express.Router();
+let notesRouter = new NotesRouter(router);
+app.use("/notes", router);
 
-Promise.all([promise1, promise2, promise3])
-    .then(() => {
-      console.log("Added Notes");
 
-      notesManager.getAllNotes()
-          .then(notes => {
-            notes.forEach(note => {
-              console.log("Note: ", note);
-            });
-          });
-    });
+let port = 3000;
 
+if (process.env.PORT !== undefined) {
+  port = process.env.PORT;
+}
+
+console.log("port: ", port);
+app.listen(port);
+
+console.log("Server is running on port: " + port);
