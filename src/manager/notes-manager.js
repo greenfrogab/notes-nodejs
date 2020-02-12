@@ -1,10 +1,10 @@
 import Note from "../routes/notes/note";
-import InMemoryRepository from "../repository/inmemory-repository";
+import NotesMongoDbRepository from "../repository/mongodb-repository";
 
 export default class NotesManager {
 
   constructor() {
-    this._repository = new InMemoryRepository();
+    this._repository = new NotesMongoDbRepository();
   }
 
   /**
